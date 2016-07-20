@@ -51,6 +51,11 @@ sub keys {
 
 ## Lifecycle Management
 
+sub change_id {
+    my $self = shift;
+    $self->options->{change_id} = 1;
+}
+
 sub expire {
     my $self = shift;
     for my $key ($self->keys) {
@@ -131,6 +136,11 @@ Perl's normal hash.
 =head2 Session Lifecycle Management
 
 =over 4
+
+=item B<change_id>
+
+This method can be called to re-generate the current session id.
+This feature is useful for preventing session fixation attack.
 
 =item B<expire>
 
