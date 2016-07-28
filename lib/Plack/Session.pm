@@ -56,6 +56,16 @@ sub change_id {
     $self->options->{change_id} = 1;
 }
 
+sub no_store {
+    my $self = shift;
+    $self->options->{no_store} = 1;
+}
+
+sub late_store {
+    my $self = shift;
+    $self->options->{late_store} = 1;
+}
+
 sub expire {
     my $self = shift;
     for my $key ($self->keys) {
@@ -142,9 +152,25 @@ Perl's normal hash.
 This method can be called to re-generate the current session id.
 This feature is useful for preventing session fixation attack.
 
+SEE ALSO: L<Plack::Middleware::Session/"change_id">
+
+=item B<no_store>
+
+This method can be called to no store the current session.
+
+SEE ALSO: L<Plack::Middleware::Session/"no_store">
+
+=item B<late_store>
+
+This method can be called to late store the current session.
+
+SEE ALSO: L<Plack::Middleware::Session/"late_store">
+
 =item B<expire>
 
 This method can be called to expire the current session id.
+
+SEE ALSO: L<Plack::Middleware::Session/"expire">
 
 =back
 
